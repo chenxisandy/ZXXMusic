@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">ZXXMusic</string>
+    <string name="pauseDownload">已经暂停，点击继续下载</string>
+</resources>

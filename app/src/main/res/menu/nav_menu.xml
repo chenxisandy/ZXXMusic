@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/nav_alarm"
+            android:title="定时"
+            android:icon="@drawable/ic_alarm_black_24dp"/>
+        <item
+            android:id="@+id/nav_setting"
+            android:title="设置"
+            android:icon="@drawable/ic_settings_black_24dp"/>
+        <item
+            android:id="@+id/nav_other"
+            android:title="其他"
+            />
+
+    </group>
+
+</menu>
