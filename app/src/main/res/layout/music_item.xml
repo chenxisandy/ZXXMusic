@@ -4,7 +4,7 @@
     android:layout_height="wrap_content">
 
     <TextView
-        android:id="@+id/collection_item_title"
+        android:id="@+id/music_item_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
@@ -13,7 +13,7 @@
         />
 
     <TextView
-        android:id="@+id/collection_music_size"
+        android:id="@+id/music_artist"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/collection_item_title"
@@ -26,7 +26,7 @@
         />
 
     <ImageView
-        android:id="@+id/click_more_choices"
+        android:id="@+id/music_more_choices"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"

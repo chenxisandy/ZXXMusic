@@ -8,7 +8,7 @@ public class ValueUtil {
 
     public static final int DOWNLOAD_LIST = 461;
 
-    public static final int START_LIST = 462;
+    public static final int STAR_LIST = 462;
 
     //url
     public static final String BASE_URL = "https://v1.itooi.cn/netease/";
@@ -28,4 +28,12 @@ public class ValueUtil {
     public static final int MUSIC_PLAY_UI = 468;
 
     public static final int COLLECTION_UI = 469;
+
+    //permission
+    public static final int REQUEST_PERMISSION = 470;
+
+    //extra
+    public static final String LIST_TYPE = "type";
+
+    public static final String INDEX_OF_LIST = "index";
 }

@@ -15,7 +15,7 @@ public abstract class BaseActivity<V, T extends BasePresenter<V>> extends AppCom
         //透明状态栏  
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         //透明导航栏  
-        getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
+        //getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
         presenter = this.createPresenter();
         presenter.attachView((V) this);
     }

@@ -68,6 +68,8 @@ public class BottomLayoutPresenter extends BasePresenter<BottomLayoutContract.IV
     @Override
     public void openMusicPlay() {
         Intent intent = new Intent(mContext, MusicPlayActivity.class);
+        //from outside of an Activity  context requires the FLAG_ACTIVITY_NEW_TASK flag
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         mContext.startActivity(intent);
     }
 }

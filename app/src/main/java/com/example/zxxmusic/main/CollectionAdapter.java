@@ -68,7 +68,7 @@ public class CollectionAdapter extends RecyclerView.Adapter<CollectionAdapter.Vi
 
         TextView countTv;
 
-        public ViewHolder(@NonNull View itemView) {
+        ViewHolder(@NonNull View itemView) {
             super(itemView);
             imgImv = itemView.findViewById(R.id.collection_img_title);
             moreImv = itemView.findViewById(R.id.more_choice_collection_iv);

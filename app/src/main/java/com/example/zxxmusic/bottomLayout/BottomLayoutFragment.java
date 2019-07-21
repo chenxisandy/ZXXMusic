@@ -19,7 +19,9 @@ import android.widget.TextView;
 
 import com.example.zxxmusic.R;
 import com.example.zxxmusic.base.BaseFragment;
+import com.example.zxxmusic.main.MainActivity;
 import com.example.zxxmusic.musicService.MusicService;
+import com.example.zxxmusic.util.ValueUtil;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -42,8 +44,6 @@ public class BottomLayoutFragment extends BaseFragment<BottomLayoutContract.IVie
 
     private TextView artistTv;
 
-    private static final String TAG = "BottomLayoutFragment";
-
     private Context context;
 
     @Nullable
@@ -52,6 +52,7 @@ public class BottomLayoutFragment extends BaseFragment<BottomLayoutContract.IVie
                              @Nullable Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
         View root = inflater.inflate(R.layout.bottom_layout_fragment, container, false);
+        initView(root);
         return root;
     }
 
@@ -65,7 +66,7 @@ public class BottomLayoutFragment extends BaseFragment<BottomLayoutContract.IVie
         @Override
         public void onServiceConnected(ComponentName name, IBinder service) {
             if (getActivity() == null) {
-                Log.i(TAG, "onServiceConnected: getActivity error");
+                Log.e("connection::", "onServiceConnected: error");
                 return;
             }
             context = getActivity().getApplicationContext();
@@ -85,6 +86,9 @@ public class BottomLayoutFragment extends BaseFragment<BottomLayoutContract.IVie
         if (getActivity() != null) {
             context = getActivity().getApplicationContext();
             Intent bindIntent = new Intent(context, MusicService.class);
+            if (type == ValueUtil.MAIN_UI) {    //如果在主界面的
+                getActivity().startService(bindIntent);
+            }
             context.bindService(bindIntent, connection, BIND_AUTO_CREATE);
         }
     }
@@ -107,25 +111,24 @@ public class BottomLayoutFragment extends BaseFragment<BottomLayoutContract.IVie
 
     @Override
     public void play() {
-        playOrPauseImv.setImageResource(R.drawable.notification_play);
+        playOrPauseImv.setImageResource(R.drawable.notification_pause);
     }
 
     @Override
     public void pause() {
-        playOrPauseImv.setImageResource(R.drawable.notification_pause);
+        playOrPauseImv.setImageResource(R.drawable.notification_play);
     }
 
-    private void initView() {
-        Activity activity = getActivity();
-        if (activity != null) {
-            titleImv = activity.findViewById(R.id.civ_bottom);
-            playOrPauseImv = activity.findViewById(R.id.bottom_play);
-            playListImv = activity.findViewById(R.id.bottom_text);
-            artistTv = activity.findViewById(R.id.bottom_artist);
-            titleTv = activity.findViewById(R.id.bottom_title);
+    private void initView(View view) {
+        if (view != null) {
+            titleImv = view.findViewById(R.id.civ_bottom);
+            playOrPauseImv = view.findViewById(R.id.bottom_play);
+            playListImv = view.findViewById(R.id.iv_play_list);
+            artistTv = view.findViewById(R.id.bottom_artist);
+            titleTv = view.findViewById(R.id.bottom_title);
             playOrPauseImv.setOnClickListener(this);
             playListImv.setOnClickListener(this);
-            LinearLayout parentLayout = activity.findViewById(R.id.bottom_layout_fragment);
+            LinearLayout parentLayout = view.findViewById(R.id.bottom_layout_fragment);
             parentLayout.setOnClickListener(this);
         }
     }
@@ -139,7 +142,7 @@ public class BottomLayoutFragment extends BaseFragment<BottomLayoutContract.IVie
             case R.id.bottom_play:
                 mPresenter.playOrPause();
                 break;
-            case R.id.bottom_text:
+            case R.id.iv_play_list:
                 mPresenter.openListDialog();
                 break;
         }

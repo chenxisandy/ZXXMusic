@@ -108,7 +108,7 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/main_start_list"
+                android:id="@+id/main_star_list"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp">

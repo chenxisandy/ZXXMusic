@@ -1,6 +1,10 @@
 package com.example.zxxmusic.list;
 
 public interface ListContract {
-    interface IView{}
-    interface IPresenter{}
+    interface IView {
+        int getIndexFromIntent();
+    }
+
+    interface IPresenter {
+    }
 }
